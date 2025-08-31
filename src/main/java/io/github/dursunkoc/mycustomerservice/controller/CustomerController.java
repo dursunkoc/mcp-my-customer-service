@@ -5,6 +5,7 @@ import io.github.dursunkoc.mycustomerservice.domain.CustomerWrite;
 import io.github.dursunkoc.mycustomerservice.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
     @PostMapping("/new")
-    public Customer createCustomer(@RequestBody CustomerWrite customerWrite){
+    public Mono<Customer> createCustomer(@RequestBody CustomerWrite customerWrite){
         return customerService.createCustomer(customerWrite);
     }
 
